@@ -1,4 +1,4 @@
-library networking_service;
+export 'package:networking_service/src/implementations/http_networking_service.dart';
 
 /// A Calculator.
 class Calculator {

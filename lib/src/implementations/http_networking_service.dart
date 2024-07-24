@@ -34,12 +34,27 @@ class HttpNetworkService extends NetworkingService {
       HttpMethod.patch => _patch(url, body: body, headers: mergedHeaders),
       HttpMethod.put => _put(url, body: body, headers: mergedHeaders),
       HttpMethod.delete => _delete(url, headers: mergedHeaders, body: body),
-      HttpMethod.multipartPost => _multipartRequest(url,
-          body: body, headers: mergedHeaders, files: files, method: 'POST'),
-      HttpMethod.multipartPatch => _multipartRequest(url,
-          body: body, headers: mergedHeaders, files: files, method: 'PATCH'),
-      HttpMethod.multipartPut => _multipartRequest(url,
-          body: body, headers: mergedHeaders, files: files, method: 'PUT'),
+      HttpMethod.multipartPost => _multipartRequest(
+          url,
+          body: body,
+          headers: mergedHeaders,
+          files: files,
+          method: 'POST',
+        ),
+      HttpMethod.multipartPatch => _multipartRequest(
+          url,
+          body: body,
+          headers: mergedHeaders,
+          files: files,
+          method: 'PATCH',
+        ),
+      HttpMethod.multipartPut => _multipartRequest(
+          url,
+          body: body,
+          headers: mergedHeaders,
+          files: files,
+          method: 'PUT',
+        ),
     };
   }
 
@@ -140,10 +155,10 @@ class HttpNetworkService extends NetworkingService {
 
   Future<T> _multipartRequest<T>(
     String url, {
+    required String method,
     Map<String, String>? headers,
     Map<String, dynamic>? body,
     Map<String, String>? files,
-    required String method,
   }) async {
     final request = http.MultipartRequest(method, Uri.parse(url));
     if (headers != null) {
@@ -155,7 +170,7 @@ class HttpNetworkService extends NetworkingService {
       });
     }
     if (files != null) {
-      for (var entry in files.entries) {
+      for (final entry in files.entries) {
         request.files
             .add(await http.MultipartFile.fromPath(entry.key, entry.value));
       }
