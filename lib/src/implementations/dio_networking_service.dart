@@ -1,18 +1,26 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:networking_service/src/exception.dart';
+import 'package:networking_service/src/network_exception.dart';
 import 'package:networking_service/src/networking_service.dart';
 import 'package:networking_service/src/utils/map_merger.dart';
 import 'package:networking_service/src/utils/response_parser.dart';
 
-// TODO(FarisArmoush): Actually implement and test, compare to the one in Taktikat.
+/// An implementation of the [NetworkingService] interface using the Dio package
+///
+/// This service uses the [Dio] package to perform HTTP requests.
+/// It supports various HTTP methods, including GET, POST, PUT, PATCH, DELETE,
+/// and multipart requests for file uploads.
 class DioNetworkingService extends NetworkingService {
+  /// Constructs an [DioNetworkingService] with the given [baseUrl], [dio],
+  /// and optional [defaultHeaders].
   DioNetworkingService({
     required super.baseUrl,
     required super.defaultHeaders,
     required this.dio,
   });
+
+  /// The client used to perform requests.
   final Dio dio;
 
   @override
