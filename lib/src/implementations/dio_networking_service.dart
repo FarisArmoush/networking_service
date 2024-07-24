@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:networking_service/src/exception.dart';
+import 'package:networking_service/src/network_exception.dart';
 import 'package:networking_service/src/networking_service.dart';
 import 'package:networking_service/src/utils/map_merger.dart';
 import 'package:networking_service/src/utils/response_parser.dart';
