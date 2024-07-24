@@ -70,7 +70,7 @@ abstract class NetworkingService {
   /// The default headers to be included in each request.
   final Map<String, String>? defaultHeaders;
 
-  /// Makes a network request to the specified [endpoint] with the given [method]
+  /// Does a network request to the specified [endpoint] with the given [method]
   ///
   /// Optionally, a [body] and [headers] can be provided.
   ///
