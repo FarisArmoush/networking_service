@@ -2,18 +2,27 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:networking_service/src/exception.dart';
+import 'package:networking_service/src/network_exception.dart';
 import 'package:networking_service/src/networking_service.dart';
 import 'package:networking_service/src/utils/map_merger.dart';
 import 'package:networking_service/src/utils/response_parser.dart';
 
+/// An implementation of the [NetworkingService] interface using
+/// the HTTP protocol.
+///
+/// This service uses the [http] package to perform HTTP requests.
+/// It supports various HTTP methods, including GET, POST, PUT, PATCH, DELETE,
+/// and multipart requests for file uploads.
 class HttpNetworkService extends NetworkingService {
+  /// Constructs an [HttpNetworkService] with the given [baseUrl], [client],
+  /// and optional [defaultHeaders].
   const HttpNetworkService({
     required super.baseUrl,
     required this.client,
     super.defaultHeaders,
   });
 
+  /// The HTTP client used to perform requests.
   final http.Client client;
 
   @override
