@@ -22,14 +22,16 @@ void main() {
       expect(result, isA<List<Map<String, dynamic>>>());
       expect(result, [
         {'key1': 'value1'},
-        {'key2': 'value2'}
+        {'key2': 'value2'},
       ]);
     });
 
     test('should throw UnimplementedError for unsupported type', () {
       const jsonString = '{"key": "value"}';
-      expect(() => parseResponse<int>(jsonString),
-          throwsA(isA<UnimplementedError>()));
+      expect(
+        () => parseResponse<int>(jsonString),
+        throwsA(isA<UnimplementedError>()),
+      );
     });
   });
 }
