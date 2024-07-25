@@ -28,8 +28,10 @@ void main() {
 
     test('should throw UnimplementedError for unsupported type', () {
       const jsonString = '{"key": "value"}';
-      expect(() => parseResponse<int>(jsonString),
-          throwsA(isA<UnimplementedError>()));
+      expect(
+        () => parseResponse<int>(jsonString),
+        throwsA(isA<UnimplementedError>()),
+      );
     });
   });
 }
