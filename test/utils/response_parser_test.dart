@@ -22,7 +22,7 @@ void main() {
       expect(result, isA<List<Map<String, dynamic>>>());
       expect(result, [
         {'key1': 'value1'},
-        {'key2': 'value2'}
+        {'key2': 'value2'},
       ]);
     });
 
